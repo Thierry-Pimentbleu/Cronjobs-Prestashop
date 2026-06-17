@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.2](https://github.com/Thierry-Pimentbleu/Cronjobs-Prestashop/compare/v1.1.1...v1.1.2) (2026-06-17)
+
+
+### Bug Fixes
+
+* auto-sync ps_module version when PHP file is newer than DB ([dd0d54c](https://github.com/Thierry-Pimentbleu/Cronjobs-Prestashop/commit/dd0d54c9a5849b8c5ade66452265312d3b1f532d))
+* store update nonce in DB to bypass OPcache mismatch ([e032f8c](https://github.com/Thierry-Pimentbleu/Cronjobs-Prestashop/commit/e032f8c565cf924f0d27cda2b6a877f301104d44))
+
 ## [1.1.1](https://github.com/Thierry-Pimentbleu/Cronjobs-Prestashop/compare/v1.1.0...v1.1.1) (2026-06-17)
 
 
