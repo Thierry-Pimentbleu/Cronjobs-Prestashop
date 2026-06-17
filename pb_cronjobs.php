@@ -31,7 +31,7 @@ class Pb_CronJobs extends Module
     {
         $this->name = 'pb_cronjobs';
         $this->tab = 'administration';
-        $this->version = '1.1.1'; // x-release-please-version
+        $this->version = '1.1.2'; // x-release-please-version
         $this->author = 'PimentBleu';
         $this->need_instance = false;
         $this->bootstrap = true;
