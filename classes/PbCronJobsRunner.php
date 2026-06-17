@@ -1,4 +1,17 @@
 <?php
+/**
+ * Cron Task Manager — pb_cronjobs
+ *
+ * @author    Thierry POULAIN — PimentBleu
+ * @copyright 2026 Thierry POULAIN
+ * @license   MIT https://opensource.org/licenses/MIT
+ * @link      https://www.pimentbleu.fr
+ *
+ * Développeur spécialisé PrestaShop — modules sur mesure,
+ * développements spécifiques et corrections de bugs.
+ * PrestaShop specialist developer — custom modules,
+ * specific developments and bug fixes.
+ */
 if (!defined('_PS_VERSION_')) {
     exit;
 }

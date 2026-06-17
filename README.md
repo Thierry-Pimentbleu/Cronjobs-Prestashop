@@ -47,6 +47,13 @@ Quand une mise à jour est disponible, une notification apparaît dans le back o
 
 MIT — libre d'utilisation, de modification et de redistribution. Voir [LICENSE](LICENSE).
 
+## À propos de l'auteur
+
+Développé par **Thierry POULAIN** — PimentBleu  
+Développeur spécialisé PrestaShop. Je réalise des modules sur mesure, des développements spécifiques et des corrections de bugs pour les boutiques PrestaShop.
+
+🌐 [https://www.pimentbleu.fr](https://www.pimentbleu.fr)
+
 ---
 
 # Cron Task Manager for PrestaShop
@@ -98,14 +105,9 @@ When an update is available, a notification appears in the PrestaShop back offic
 
 MIT — free to use, modify and redistribute. See [LICENSE](LICENSE).
 
----
+## About the author
 
-## À propos de l'auteur / About the author
-
-Développé par **Thierry POULAIN** — développeur spécialisé PrestaShop.  
-Je réalise des modules sur mesure, des développements spécifiques et des corrections de bugs pour les boutiques PrestaShop.
-
-Developed by **Thierry POULAIN** — PrestaShop specialist developer.  
-I build custom modules, specific developments and bug fixes for PrestaShop stores.
+Developed by **Thierry POULAIN** — PimentBleu  
+PrestaShop specialist developer. I build custom modules, specific developments and bug fixes for PrestaShop stores.
 
 🌐 [https://www.pimentbleu.fr](https://www.pimentbleu.fr)
