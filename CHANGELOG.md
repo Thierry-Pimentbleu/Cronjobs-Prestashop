@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.1](https://github.com/Thierry-Pimentbleu/Cronjobs-Prestashop/compare/v1.1.0...v1.1.1) (2026-06-17)
+
+
+### Bug Fixes
+
+* replace Context-based auth with nonce in update endpoints ([747c94d](https://github.com/Thierry-Pimentbleu/Cronjobs-Prestashop/commit/747c94d5e075ef73ba64293bf2399b65f47c863c))
+* skip upgrade/php/ during file copy and update ps_module version ([4e0bb96](https://github.com/Thierry-Pimentbleu/Cronjobs-Prestashop/commit/4e0bb969cd5f6f044591bbba551eac8e1792dc12))
+
 ## [1.1.0](https://github.com/Thierry-Pimentbleu/Cronjobs-Prestashop/compare/v1.0.0...v1.1.0) (2026-06-17)
 
 
