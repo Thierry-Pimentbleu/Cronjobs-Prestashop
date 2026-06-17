@@ -626,18 +626,7 @@ class Pb_CronJobs extends Module
 
     public function hookDisplayBackOfficeTop()
     {
-        if (Tools::getValue('configure') == $this->name) {
-            return '';
-        }
-        $updater = new PbCronJobsUpdater();
-        if (!$updater->hasUpdate()) {
-            return '';
-        }
-        $configUrl = $this->getConfigureLink();
-        return '<div style="background:#fcf8e3; border:1px solid #f0ad4e; padding:8px 20px; margin-bottom:0; display:flex; align-items:center; gap:15px;">'
-            . '<span style="color:#8a6d3b;"><strong>pb_cronjobs</strong> — ' . $this->l('An update is available for Cron task manager') . '</span>'
-            . '<a href="' . htmlspecialchars($configUrl, ENT_QUOTES) . '" class="btn btn-warning btn-xs">' . $this->l('Go to update') . '</a>'
-            . '</div>';
+        return '';
     }
 
     // ─── MIGRATION ──────────────────────────────────────────────────────────

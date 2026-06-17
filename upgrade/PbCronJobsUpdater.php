@@ -143,7 +143,13 @@ class PbCronJobsUpdater
         if (!is_dir($src)) {
             return false;
         }
-        $this->copyRecursive($src, $dest);
+        // upgrade/php/ contains the active update endpoints — never overwrite them mid-update
+        $skip = [];
+        $phpDir = realpath($src . '/upgrade/php');
+        if ($phpDir) {
+            $skip[] = $phpDir;
+        }
+        $this->copyRecursive($src, $dest, $skip);
         return true;
     }
 
@@ -151,23 +157,33 @@ class PbCronJobsUpdater
     {
         $sqlDir    = _PS_CORE_DIR_ . '/modules/pb_cronjobs/upgrade/sql/';
         $installed = $this->getInstalledVersion();
-        if (!is_dir($sqlDir)) {
-            return true;
-        }
-        $db = Db::getInstance();
-        foreach (glob($sqlDir . '*.sql') as $file) {
-            $ver = pathinfo($file, PATHINFO_FILENAME);
-            if (version_compare($ver, $installed, '>')) {
-                $sql = str_replace('PREFIX_', _DB_PREFIX_, file_get_contents($file));
-                foreach (preg_split("/;\s*[\r\n]+/", $sql) as $stmt) {
-                    $stmt = trim($stmt);
-                    if ($stmt && !$db->execute($stmt)) {
-                        return false;
+        if (is_dir($sqlDir)) {
+            $db = Db::getInstance();
+            foreach (glob($sqlDir . '*.sql') as $file) {
+                $ver = pathinfo($file, PATHINFO_FILENAME);
+                if (version_compare($ver, $installed, '>')) {
+                    $sql = str_replace('PREFIX_', _DB_PREFIX_, file_get_contents($file));
+                    foreach (preg_split("/;\s*[\r\n]+/", $sql) as $stmt) {
+                        $stmt = trim($stmt);
+                        if ($stmt && !$db->execute($stmt)) {
+                            return false;
+                        }
                     }
                 }
             }
         }
+        $this->updateModuleVersion();
         return true;
+    }
+
+    protected function updateModuleVersion()
+    {
+        $newVersion = Configuration::getGlobalValue(self::CONF_LATEST_VER);
+        if ($newVersion) {
+            Db::getInstance()->execute(
+                'UPDATE `' . _DB_PREFIX_ . 'module` SET `version` = \'' . pSQL($newVersion) . '\' WHERE `name` = \'pb_cronjobs\''
+            );
+        }
     }
 
     public function clearCache()
@@ -215,7 +231,7 @@ class PbCronJobsUpdater
         return json_decode($response, true);
     }
 
-    protected function copyRecursive($src, $dst)
+    protected function copyRecursive($src, $dst, $skipAbsPaths = [])
     {
         if (!is_dir($src)) {
             return;
@@ -223,11 +239,17 @@ class PbCronJobsUpdater
         foreach (array_diff(scandir($src), ['.', '..']) as $item) {
             $s = $src . '/' . $item;
             $d = $dst . '/' . $item;
+            if ($skipAbsPaths) {
+                $real = realpath($s);
+                if ($real && in_array($real, $skipAbsPaths)) {
+                    continue;
+                }
+            }
             if (is_dir($s)) {
                 if (!is_dir($d)) {
                     mkdir($d, 0755, true);
                 }
-                $this->copyRecursive($s, $d);
+                $this->copyRecursive($s, $d, $skipAbsPaths);
             } else {
                 copy($s, $d);
             }
