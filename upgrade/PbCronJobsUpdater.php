@@ -13,8 +13,10 @@ class PbCronJobsUpdater
 
     public function getInstalledVersion()
     {
-        $mod = Module::getInstanceByName('pb_cronjobs');
-        return $mod ? $mod->version : '0.0.0';
+        $version = Db::getInstance()->getValue(
+            'SELECT `version` FROM `' . _DB_PREFIX_ . 'module` WHERE `name` = \'pb_cronjobs\''
+        );
+        return $version ?: '0.0.0';
     }
 
     public function getLatestVersion($force = false)
@@ -177,6 +179,9 @@ class PbCronJobsUpdater
 
     protected function githubGet($url)
     {
+        if (!function_exists('curl_init')) {
+            return null;
+        }
         $ch = curl_init($url);
         curl_setopt_array($ch, [
             CURLOPT_RETURNTRANSFER => true,

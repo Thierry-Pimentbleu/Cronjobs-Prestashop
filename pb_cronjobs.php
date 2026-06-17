@@ -134,6 +134,8 @@ class Pb_CronJobs extends Module
             'Module updated successfully.'                                   => 'Le module a été mis à jour avec succès.',
             'Update error:'                                                  => 'Erreur de mise à jour :',
             'Close and reload'                                               => 'Fermer et recharger',
+            'Up to date'                                                     => 'À jour',
+            'Check for updates'                                              => 'Vérifier les mises à jour',
         ],
         'es' => [
             'Cron task manager'                                              => 'Gestor de tareas cron',
@@ -200,6 +202,7 @@ class Pb_CronJobs extends Module
             'Updating database...' => 'Actualizando base de datos...', 'Update complete' => 'Actualización completada',
             'Module updated successfully.' => 'El módulo se ha actualizado correctamente.',
             'Update error:' => 'Error de actualización:', 'Close and reload' => 'Cerrar y recargar',
+            'Up to date' => 'Al día', 'Check for updates' => 'Buscar actualizaciones',
             'Call the following URL every minute in your hosting control panel:' => 'Llame a la siguiente URL cada minuto en su panel de hosting:',
             'Example with curl:' => 'Ejemplo con curl:',
             'Edit cron task' => 'Editar tarea cron', 'New cron task' => 'Nueva tarea cron',
@@ -272,6 +275,7 @@ class Pb_CronJobs extends Module
             'Updating database...' => 'Datenbank wird aktualisiert...', 'Update complete' => 'Update abgeschlossen',
             'Module updated successfully.' => 'Das Modul wurde erfolgreich aktualisiert.',
             'Update error:' => 'Update-Fehler:', 'Close and reload' => 'Schließen und neu laden',
+            'Up to date' => 'Aktuell', 'Check for updates' => 'Nach Updates suchen',
         ],
         'nl' => [
             'Cron task manager'                                              => 'Cron-taakbeheerder',
@@ -340,6 +344,7 @@ class Pb_CronJobs extends Module
             'Updating database...' => 'Database bijwerken...', 'Update complete' => 'Update voltooid',
             'Module updated successfully.' => 'De module is succesvol bijgewerkt.',
             'Update error:' => 'Updatefout:', 'Close and reload' => 'Sluiten en herladen',
+            'Up to date' => 'Up-to-date', 'Check for updates' => 'Controleren op updates',
         ],
         'it' => [
             'Cron task manager'                                              => 'Gestione attività cron',
@@ -408,6 +413,7 @@ class Pb_CronJobs extends Module
             'Updating database...' => 'Aggiornamento database...', 'Update complete' => 'Aggiornamento completato',
             'Module updated successfully.' => 'Il modulo è stato aggiornato con successo.',
             'Update error:' => 'Errore aggiornamento:', 'Close and reload' => 'Chiudi e ricarica',
+            'Up to date' => 'Aggiornato', 'Check for updates' => 'Cerca aggiornamenti',
         ],
         'pt' => [
             'Cron task manager'                                              => 'Gestor de tarefas cron',
@@ -476,6 +482,7 @@ class Pb_CronJobs extends Module
             'Updating database...' => 'A atualizar base de dados...', 'Update complete' => 'Atualização concluída',
             'Module updated successfully.' => 'O módulo foi atualizado com sucesso.',
             'Update error:' => 'Erro de atualização:', 'Close and reload' => 'Fechar e recarregar',
+            'Up to date' => 'Atualizado', 'Check for updates' => 'Verificar atualizações',
         ],
     ];
 
@@ -654,7 +661,13 @@ class Pb_CronJobs extends Module
     {
         $this->migrateDb();
 
-        $updater       = new PbCronJobsUpdater();
+        $updater = new PbCronJobsUpdater();
+
+        if (Tools::getValue('check_update')) {
+            $updater->getLatestVersion(true);
+            Tools::redirectAdmin($this->getConfigureLink());
+        }
+
         $hasUpdate     = $updater->hasUpdate();
         $latestVersion = $hasUpdate ? $updater->getLatestVersion() : '';
         $changelog     = $hasUpdate ? $updater->getChangelog() : [];
@@ -927,8 +940,15 @@ class Pb_CronJobs extends Module
 
     protected function renderUpdateSection($hasUpdate, $changelog, $latestVersion)
     {
+        $installedEsc = htmlspecialchars($this->version, ENT_QUOTES);
+        $checkUrl     = htmlspecialchars($this->getConfigureLink() . '&check_update=1', ENT_QUOTES);
+
         if (!$hasUpdate) {
-            return '';
+            return '<div class="alert alert-info" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-bottom:15px;">'
+                . '<span><strong>pb_cronjobs</strong> &nbsp;v' . $installedEsc
+                . ' &nbsp;<span style="color:#31708f;">&#10003; ' . $this->l('Up to date') . '</span></span>'
+                . '<a href="' . $checkUrl . '" class="btn btn-default btn-xs">' . $this->l('Check for updates') . '</a>'
+                . '</div>';
         }
 
         $changelogHtml = '';
