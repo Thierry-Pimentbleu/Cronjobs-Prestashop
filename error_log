@@ -1,6 +1,0 @@
-[15-Jun-2026 21:08:55 Europe/Paris] PHP Warning:  require_once(../../../../config/config.inc.php): Failed to open stream: No such file or directory in /home/c2774839c/public_html/sites/pincab/www/modules/pb_cronjobs/debug_translations.php on line 6
-[15-Jun-2026 21:08:55 Europe/Paris] PHP Fatal error:  Uncaught Error: Failed opening required '../../../../config/config.inc.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/c2774839c/public_html/sites/pincab/www/modules/pb_cronjobs/debug_translations.php:6
-Stack trace:
-#0 {main}
-  thrown in /home/c2774839c/public_html/sites/pincab/www/modules/pb_cronjobs/debug_translations.php on line 6
-[15-Jun-2026 21:10:07 Europe/Paris] PHP Fatal error:  Declaration of Pb_CronJobs::l($string, $specific = false) must be compatible with ModuleCore::l($string, $specific = false, $locale = null) in /home/c2774839c/public_html/sites/pincab/www/modules/pb_cronjobs/pb_cronjobs.php on line 31
