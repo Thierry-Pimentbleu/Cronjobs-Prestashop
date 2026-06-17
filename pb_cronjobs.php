@@ -668,6 +668,13 @@ class Pb_CronJobs extends Module
 
         $updater = new PbCronJobsUpdater();
 
+        // Auto-sync DB version if files were manually uploaded (file > DB)
+        if (version_compare($this->version, $updater->getInstalledVersion(), '>')) {
+            Db::getInstance()->execute(
+                'UPDATE `' . _DB_PREFIX_ . 'module` SET `version` = \'' . pSQL($this->version) . '\' WHERE `name` = \'pb_cronjobs\''
+            );
+        }
+
         if (Tools::getValue('check_update')) {
             $updater->getLatestVersion(true);
             Tools::redirectAdmin($this->getConfigureLink());
