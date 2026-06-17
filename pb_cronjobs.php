@@ -609,8 +609,9 @@ class Pb_CronJobs extends Module
             $this->context->controller->addJS($this->_path . 'views/js/admin.js');
             $this->context->controller->addJS($this->_path . 'views/js/update.js');
             Media::addJsDef([
-                'pbCronjobsUpdatePath' => $this->_path . 'upgrade/php/',
-                'pbCronjobsI18n'       => [
+                'pbCronjobsUpdatePath'  => $this->_path . 'upgrade/php/',
+                'pbCronjobsUpdateNonce' => sha1(_COOKIE_KEY_ . 'pb_cronjobs_update' . date('Ymd')),
+                'pbCronjobsI18n'        => [
                     'downloading'  => $this->l('Downloading update...'),
                     'updatingFiles' => $this->l('Updating files...'),
                     'updatingDb'   => $this->l('Updating database...'),

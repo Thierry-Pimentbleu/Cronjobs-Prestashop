@@ -78,7 +78,7 @@
             };
             xhr.onerror = function () { reject('Network error'); };
             xhr.ontimeout = function () { reject('Timeout'); };
-            xhr.send('');
+            xhr.send('nonce=' + encodeURIComponent(pbCronjobsUpdateNonce));
         });
     }
 

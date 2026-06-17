@@ -13,8 +13,8 @@ require_once('../PbCronJobsUpdater.php');
 
 header('Content-Type: application/json');
 
-$context = Context::getContext();
-if (!$context->employee || !$context->employee->isLoggedBack()) {
+$expected = sha1(_COOKIE_KEY_ . 'pb_cronjobs_update' . date('Ymd'));
+if (!isset($_POST['nonce']) || !hash_equals($expected, $_POST['nonce'])) {
     http_response_code(403);
     echo json_encode(['success' => false, 'error' => 'Unauthorized']);
     exit;
