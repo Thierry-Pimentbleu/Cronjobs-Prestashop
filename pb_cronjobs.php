@@ -4,6 +4,7 @@ if (!defined('_PS_VERSION_')) {
 }
 
 require_once __DIR__ . '/classes/PbCronJobsRunner.php';
+require_once __DIR__ . '/upgrade/PbCronJobsUpdater.php';
 
 class Pb_CronJobs extends Module
 {
@@ -119,6 +120,20 @@ class Pb_CronJobs extends Module
             'Delete all log entries?'                                        => 'Supprimer toutes les entrées du journal ?',
             'Auto-purge URL (add as cron task, adjust days= as needed):'    => 'URL de purge automatique (ajouter comme tâche cron, modifier days= si besoin) :',
             'Execution log cleared.'                                         => 'Journal d\'exécution vidé.',
+            'An update is available for Cron task manager'                   => 'Une mise à jour est disponible pour le Gestionnaire de tâches cron',
+            'Go to update'                                                   => 'Voir la mise à jour',
+            'Available version'                                              => 'Version disponible',
+            'Installed version'                                              => 'Version installée',
+            "What's new"                                                     => 'Nouveautés',
+            'Update'                                                         => 'Mise à jour',
+            'Run update'                                                     => 'Lancer la mise à jour',
+            'Downloading update...'                                          => 'Téléchargement de la mise à jour...',
+            'Updating files...'                                              => 'Mise à jour des fichiers...',
+            'Updating database...'                                           => 'Mise à jour de la base de données...',
+            'Update complete'                                                => 'Mise à jour terminée',
+            'Module updated successfully.'                                   => 'Le module a été mis à jour avec succès.',
+            'Update error:'                                                  => 'Erreur de mise à jour :',
+            'Close and reload'                                               => 'Fermer et recharger',
         ],
         'es' => [
             'Cron task manager'                                              => 'Gestor de tareas cron',
@@ -177,6 +192,14 @@ class Pb_CronJobs extends Module
             'Delete all log entries?' => '¿Eliminar todas las entradas del registro?',
             'Auto-purge URL (add as cron task, adjust days= as needed):' => 'URL de purga automática (agregar como tarea cron, ajustar days= según necesidad):',
             'Execution log cleared.' => 'Registro de ejecución vaciado.',
+            'An update is available for Cron task manager' => 'Hay una actualización disponible para el Gestor de tareas cron',
+            'Go to update' => 'Ver actualización',
+            'Available version' => 'Versión disponible', 'Installed version' => 'Versión instalada',
+            "What's new" => 'Novedades', 'Update' => 'Actualización', 'Run update' => 'Lanzar actualización',
+            'Downloading update...' => 'Descargando actualización...', 'Updating files...' => 'Actualizando archivos...',
+            'Updating database...' => 'Actualizando base de datos...', 'Update complete' => 'Actualización completada',
+            'Module updated successfully.' => 'El módulo se ha actualizado correctamente.',
+            'Update error:' => 'Error de actualización:', 'Close and reload' => 'Cerrar y recargar',
             'Call the following URL every minute in your hosting control panel:' => 'Llame a la siguiente URL cada minuto en su panel de hosting:',
             'Example with curl:' => 'Ejemplo con curl:',
             'Edit cron task' => 'Editar tarea cron', 'New cron task' => 'Nueva tarea cron',
@@ -241,6 +264,14 @@ class Pb_CronJobs extends Module
             'Delete all log entries?' => 'Alle Protokolleinträge löschen?',
             'Auto-purge URL (add as cron task, adjust days= as needed):' => 'Auto-Bereinigung URL (als Cron-Aufgabe hinzufügen, days= anpassen):',
             'Execution log cleared.' => 'Ausführungsprotokoll geleert.',
+            'An update is available for Cron task manager' => 'Ein Update ist für den Cron-Aufgaben-Manager verfügbar',
+            'Go to update' => 'Zum Update', 'Available version' => 'Verfügbare Version',
+            'Installed version' => 'Installierte Version', "What's new" => 'Neuigkeiten',
+            'Update' => 'Update', 'Run update' => 'Update starten',
+            'Downloading update...' => 'Update wird heruntergeladen...', 'Updating files...' => 'Dateien werden aktualisiert...',
+            'Updating database...' => 'Datenbank wird aktualisiert...', 'Update complete' => 'Update abgeschlossen',
+            'Module updated successfully.' => 'Das Modul wurde erfolgreich aktualisiert.',
+            'Update error:' => 'Update-Fehler:', 'Close and reload' => 'Schließen und neu laden',
         ],
         'nl' => [
             'Cron task manager'                                              => 'Cron-taakbeheerder',
@@ -301,6 +332,14 @@ class Pb_CronJobs extends Module
             'Delete all log entries?' => 'Alle logvermeldingen verwijderen?',
             'Auto-purge URL (add as cron task, adjust days= as needed):' => 'Auto-zuivering URL (voeg toe als cron-taak, pas days= aan):',
             'Execution log cleared.' => 'Uitvoeringslog gewist.',
+            'An update is available for Cron task manager' => 'Er is een update beschikbaar voor de Cron-taakbeheerder',
+            'Go to update' => 'Naar update', 'Available version' => 'Beschikbare versie',
+            'Installed version' => 'Geïnstalleerde versie', "What's new" => 'Nieuw',
+            'Update' => 'Update', 'Run update' => 'Update starten',
+            'Downloading update...' => 'Update downloaden...', 'Updating files...' => 'Bestanden bijwerken...',
+            'Updating database...' => 'Database bijwerken...', 'Update complete' => 'Update voltooid',
+            'Module updated successfully.' => 'De module is succesvol bijgewerkt.',
+            'Update error:' => 'Updatefout:', 'Close and reload' => 'Sluiten en herladen',
         ],
         'it' => [
             'Cron task manager'                                              => 'Gestione attività cron',
@@ -361,6 +400,14 @@ class Pb_CronJobs extends Module
             'Delete all log entries?' => 'Eliminare tutte le voci del registro?',
             'Auto-purge URL (add as cron task, adjust days= as needed):' => 'URL purga automatica (aggiungere come attività cron, adattare days=):',
             'Execution log cleared.' => 'Registro esecuzioni cancellato.',
+            'An update is available for Cron task manager' => 'È disponibile un aggiornamento per la Gestione attività cron',
+            'Go to update' => 'Vai all\'aggiornamento', 'Available version' => 'Versione disponibile',
+            'Installed version' => 'Versione installata', "What's new" => 'Novità',
+            'Update' => 'Aggiornamento', 'Run update' => 'Avvia aggiornamento',
+            'Downloading update...' => 'Download aggiornamento...', 'Updating files...' => 'Aggiornamento file...',
+            'Updating database...' => 'Aggiornamento database...', 'Update complete' => 'Aggiornamento completato',
+            'Module updated successfully.' => 'Il modulo è stato aggiornato con successo.',
+            'Update error:' => 'Errore aggiornamento:', 'Close and reload' => 'Chiudi e ricarica',
         ],
         'pt' => [
             'Cron task manager'                                              => 'Gestor de tarefas cron',
@@ -421,6 +468,14 @@ class Pb_CronJobs extends Module
             'Delete all log entries?' => 'Eliminar todas as entradas do registo?',
             'Auto-purge URL (add as cron task, adjust days= as needed):' => 'URL de purga automática (adicionar como tarefa cron, ajustar days=):',
             'Execution log cleared.' => 'Registo de execuções limpo.',
+            'An update is available for Cron task manager' => 'Há uma atualização disponível para o Gestor de tarefas cron',
+            'Go to update' => 'Ver atualização', 'Available version' => 'Versão disponível',
+            'Installed version' => 'Versão instalada', "What's new" => 'Novidades',
+            'Update' => 'Atualização', 'Run update' => 'Iniciar atualização',
+            'Downloading update...' => 'A transferir atualização...', 'Updating files...' => 'A atualizar ficheiros...',
+            'Updating database...' => 'A atualizar base de dados...', 'Update complete' => 'Atualização concluída',
+            'Module updated successfully.' => 'O módulo foi atualizado com sucesso.',
+            'Update error:' => 'Erro de atualização:', 'Close and reload' => 'Fechar e recarregar',
         ],
     ];
 
@@ -473,7 +528,8 @@ class Pb_CronJobs extends Module
         Configuration::updateGlobalValue(self::TOKEN, bin2hex(random_bytes(16)));
         return parent::install()
             && $this->installDb()
-            && $this->registerHook('displayBackOfficeHeader');
+            && $this->registerHook('displayBackOfficeHeader')
+            && $this->registerHook('displayBackOfficeTop');
     }
 
     public function uninstall()
@@ -531,7 +587,36 @@ class Pb_CronJobs extends Module
             $this->context->controller->addCSS($this->_path . 'views/css/admin.css');
             $this->context->controller->addJS('https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js', false);
             $this->context->controller->addJS($this->_path . 'views/js/admin.js');
+            $this->context->controller->addJS($this->_path . 'views/js/update.js');
+            Media::addJsDef([
+                'pbCronjobsUpdatePath' => $this->_path . 'upgrade/php/',
+                'pbCronjobsI18n'       => [
+                    'downloading'  => $this->l('Downloading update...'),
+                    'updatingFiles' => $this->l('Updating files...'),
+                    'updatingDb'   => $this->l('Updating database...'),
+                    'done'         => $this->l('Update complete'),
+                    'success'      => $this->l('Module updated successfully.'),
+                    'updateError'  => $this->l('Update error:'),
+                    'reload'       => $this->l('Close and reload'),
+                ],
+            ]);
         }
+    }
+
+    public function hookDisplayBackOfficeTop()
+    {
+        if (Tools::getValue('configure') == $this->name) {
+            return '';
+        }
+        $updater = new PbCronJobsUpdater();
+        if (!$updater->hasUpdate()) {
+            return '';
+        }
+        $configUrl = $this->getConfigureLink();
+        return '<div style="background:#fcf8e3; border:1px solid #f0ad4e; padding:8px 20px; margin-bottom:0; display:flex; align-items:center; gap:15px;">'
+            . '<span style="color:#8a6d3b;"><strong>pb_cronjobs</strong> — ' . $this->l('An update is available for Cron task manager') . '</span>'
+            . '<a href="' . htmlspecialchars($configUrl, ENT_QUOTES) . '" class="btn btn-warning btn-xs">' . $this->l('Go to update') . '</a>'
+            . '</div>';
     }
 
     // ─── MIGRATION ──────────────────────────────────────────────────────────
@@ -556,6 +641,11 @@ class Pb_CronJobs extends Module
             }
             Configuration::updateGlobalValue('PB_CRONJOBS_V3', 1);
         }
+
+        if (!Configuration::getGlobalValue('PB_CRONJOBS_V4')) {
+            $this->registerHook('displayBackOfficeTop');
+            Configuration::updateGlobalValue('PB_CRONJOBS_V4', 1);
+        }
     }
 
     // ─── MAIN BO ENTRY POINT ────────────────────────────────────────────────
@@ -563,6 +653,11 @@ class Pb_CronJobs extends Module
     public function getContent()
     {
         $this->migrateDb();
+
+        $updater       = new PbCronJobsUpdater();
+        $hasUpdate     = $updater->hasUpdate();
+        $latestVersion = $hasUpdate ? $updater->getLatestVersion() : '';
+        $changelog     = $hasUpdate ? $updater->getChangelog() : [];
 
         // AJAX: reorder
         if (Tools::getValue('ajax') == 1 && Tools::getValue('action') === 'pb_reorder') {
@@ -597,20 +692,22 @@ class Pb_CronJobs extends Module
             'pb_sort_url'   => '',
         ]);
 
+        $updateSection = $this->renderUpdateSection($hasUpdate, $changelog, $latestVersion);
+
         if ((Tools::getValue('newpbcronjob') || Tools::getValue('submitAddPbCronJob')) && !empty($this->errors)) {
-            return $this->renderForm();
+            return $updateSection . $this->renderForm();
         }
         if (Tools::getValue('updatepbcronjob') && Tools::getValue('id_pb_cronjob')) {
             $cron = $this->getCron((int)Tools::getValue('id_pb_cronjob'));
             if ($cron) {
-                return $this->renderForm($cron);
+                return $updateSection . $this->renderForm($cron);
             }
         }
         if (Tools::getValue('newpbcronjob')) {
-            return $this->renderForm();
+            return $updateSection . $this->renderForm();
         }
 
-        return $this->renderList();
+        return $updateSection . $this->renderList();
     }
 
     // ─── FORM HANDLERS ──────────────────────────────────────────────────────
@@ -828,6 +925,94 @@ class Pb_CronJobs extends Module
 
     // ─── RENDER ─────────────────────────────────────────────────────────────
 
+    protected function renderUpdateSection($hasUpdate, $changelog, $latestVersion)
+    {
+        if (!$hasUpdate) {
+            return '';
+        }
+
+        $changelogHtml = '';
+        foreach ($changelog as $release) {
+            $changelogHtml .= '<div style="margin-bottom:8px;">'
+                . '<strong>v' . htmlspecialchars($release['version'], ENT_QUOTES) . '</strong>'
+                . '<span style="color:#999; margin-left:8px; font-size:11px;">' . htmlspecialchars($release['date'], ENT_QUOTES) . '</span>'
+                . '<div style="margin-top:4px; font-size:12px;">' . $this->parseReleaseBody($release['body']) . '</div>'
+                . '</div>';
+        }
+
+        $btnUpdate  = htmlspecialchars($this->l('Run update'), ENT_QUOTES);
+        $btnClose   = htmlspecialchars($this->l('Close'), ENT_QUOTES);
+        $latestEsc  = htmlspecialchars($latestVersion, ENT_QUOTES);
+        $installedEsc = htmlspecialchars($this->version, ENT_QUOTES);
+        $whatsNew   = htmlspecialchars($this->l("What's new"), ENT_QUOTES);
+
+        $banner = '<div class="alert alert-warning" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">'
+            . '<div>'
+            . '<strong>' . $this->l('An update is available for Cron task manager') . '</strong>'
+            . '<span style="margin-left:15px; color:#666;">'
+            . $this->l('Installed version') . ': ' . $installedEsc
+            . ' &rarr; ' . $this->l('Available version') . ': v' . $latestEsc
+            . '</span>'
+            . '</div>'
+            . '<button id="pbCronjobsBtnUpdate" class="btn btn-warning btn-sm">' . $btnUpdate . '</button>'
+            . '</div>';
+
+        $modal = '<div id="pbCronjobsUpdateModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,.6); z-index:99999; align-items:center; justify-content:center;">'
+            . '<div style="background:#fff; border-radius:6px; padding:30px; max-width:520px; width:90%; box-shadow:0 10px 40px rgba(0,0,0,.3);">'
+            . '<h4 style="margin-top:0;">' . $this->l('Update') . ' v' . $latestEsc . '</h4>'
+            . ($changelogHtml
+                ? '<div style="max-height:180px; overflow-y:auto; background:#f8f9fa; padding:10px 15px; border-radius:4px; margin-bottom:20px; font-size:13px;">'
+                  . '<strong>' . $whatsNew . '</strong><div style="margin-top:6px;">' . $changelogHtml . '</div>'
+                  . '</div>'
+                : '')
+            . '<div style="margin-bottom:15px;">'
+            . '<progress id="pbCronjobsProgressBar" max="100" value="0" style="width:100%; height:10px;"></progress>'
+            . '<div style="display:flex; justify-content:space-between; margin-top:4px;">'
+            . '<span id="pbCronjobsStepLabel" style="font-size:12px; color:#666;"></span>'
+            . '<span id="pbCronjobsProgressNumber" style="font-size:12px; font-weight:bold;">0%</span>'
+            . '</div>'
+            . '</div>'
+            . '<div id="pbCronjobsResult"></div>'
+            . '<div style="text-align:right; margin-top:15px;">'
+            . '<button id="pbCronjobsBtnClose" class="btn btn-default">' . $btnClose . '</button>'
+            . '</div>'
+            . '</div>'
+            . '</div>';
+
+        return $banner . $modal;
+    }
+
+    protected function parseReleaseBody($body)
+    {
+        $html    = '';
+        $inList  = false;
+        foreach (explode("\n", $body) as $line) {
+            $line = trim($line);
+            if ($line === '' || strpos($line, '**Full Changelog') === 0) {
+                continue;
+            }
+            if (preg_match('/^#+\s*(.+)$/', $line, $m)) {
+                if ($inList) {
+                    $html   .= '</ul>';
+                    $inList  = false;
+                }
+                $html .= '<strong style="display:block; margin-top:6px;">' . htmlspecialchars($m[1], ENT_QUOTES) . '</strong>';
+            } elseif (preg_match('/^\*\s+(.+)$/', $line, $m)) {
+                if (!$inList) {
+                    $html  .= '<ul style="margin:4px 0 4px 16px; padding:0;">';
+                    $inList = true;
+                }
+                $text  = preg_replace('/^(feat|fix|chore|refactor|docs|style|test)(\([^)]+\))?:\s*/i', '', $m[1]);
+                $text  = preg_replace('/\s+by @\S+$/', '', $text);
+                $html .= '<li style="margin:2px 0;">' . htmlspecialchars($text, ENT_QUOTES) . '</li>';
+            }
+        }
+        if ($inList) {
+            $html .= '</ul>';
+        }
+        return $html;
+    }
+
     protected function renderList()
     {
         $this->context->smarty->assign([
@@ -961,6 +1146,20 @@ class Pb_CronJobs extends Module
             'modal_confirm'     => $this->l('Are you sure you want to delete this task?'),
             // Footer
             'offered_by'        => $this->l('Module offered by'),
+            // Update
+            'update_available'  => $this->l('An update is available for Cron task manager'),
+            'go_to_update'      => $this->l('Go to update'),
+            'available_version' => $this->l('Available version'),
+            'installed_version' => $this->l('Installed version'),
+            'whats_new'         => $this->l("What's new"),
+            'run_update'        => $this->l('Run update'),
+            'downloading'       => $this->l('Downloading update...'),
+            'updating_files'    => $this->l('Updating files...'),
+            'updating_db'       => $this->l('Updating database...'),
+            'update_complete'   => $this->l('Update complete'),
+            'update_success'    => $this->l('Module updated successfully.'),
+            'update_error'      => $this->l('Update error:'),
+            'close_reload'      => $this->l('Close and reload'),
         ];
     }
 
