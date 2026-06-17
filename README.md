@@ -102,10 +102,10 @@ MIT — free to use, modify and redistribute. See [LICENSE](LICENSE).
 
 ## À propos de l'auteur / About the author
 
-Développé par **Thierry** — développeur spécialisé PrestaShop.  
+Développé par **Thierry POULAIN** — développeur spécialisé PrestaShop.  
 Je réalise des modules sur mesure, des développements spécifiques et des corrections de bugs pour les boutiques PrestaShop.
 
-Developed by **Thierry** — PrestaShop specialist developer.  
+Developed by **Thierry POULAIN** — PrestaShop specialist developer.  
 I build custom modules, specific developments and bug fixes for PrestaShop stores.
 
-🌐 [pimentbleu.fr](https://pimentbleu.fr)
+🌐 [https://www.pimentbleu.fr](https://www.pimentbleu.fr)
