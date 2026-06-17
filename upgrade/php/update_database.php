@@ -13,8 +13,8 @@ require_once('../PbCronJobsUpdater.php');
 
 header('Content-Type: application/json');
 
-$expected = sha1(_COOKIE_KEY_ . 'pb_cronjobs_update' . date('Ymd'));
-if (!isset($_POST['nonce']) || !hash_equals($expected, $_POST['nonce'])) {
+$expected = Configuration::getGlobalValue('PB_CRONJOBS_UPDATE_NONCE');
+if (!$expected || !isset($_POST['nonce']) || !hash_equals($expected, $_POST['nonce'])) {
     http_response_code(403);
     echo json_encode(['success' => false, 'error' => 'Unauthorized']);
     exit;

@@ -608,9 +608,11 @@ class Pb_CronJobs extends Module
             $this->context->controller->addJS('https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js', false);
             $this->context->controller->addJS($this->_path . 'views/js/admin.js');
             $this->context->controller->addJS($this->_path . 'views/js/update.js');
+            $nonce = sha1(_COOKIE_KEY_ . 'pb_cronjobs_update' . date('Ymd'));
+            Configuration::updateGlobalValue('PB_CRONJOBS_UPDATE_NONCE', $nonce);
             Media::addJsDef([
                 'pbCronjobsUpdatePath'  => $this->_path . 'upgrade/php/',
-                'pbCronjobsUpdateNonce' => sha1(_COOKIE_KEY_ . 'pb_cronjobs_update' . date('Ymd')),
+                'pbCronjobsUpdateNonce' => $nonce,
                 'pbCronjobsI18n'        => [
                     'downloading'  => $this->l('Downloading update...'),
                     'updatingFiles' => $this->l('Updating files...'),
