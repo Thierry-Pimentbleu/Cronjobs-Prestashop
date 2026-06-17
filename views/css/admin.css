@@ -1,0 +1,150 @@
+/* pb_cronjobs — Admin styles */
+
+/* Table */
+.pb-crons-table th,
+.pb-crons-table td {
+    vertical-align: middle !important;
+}
+.pb-col-handle  { width: 24px; padding-right: 0 !important; }
+.pb-sort-handle { cursor: grab; color: #bbb; font-size: 14px; }
+.pb-sort-handle:hover { color: #888; }
+.pb-row-dragging { background: #f0f7ff !important; opacity: 0.85; }
+.pb-col-desc  { min-width: 140px; }
+.pb-col-url   { max-width: 260px; word-break: break-all; font-size: 12px; }
+.pb-col-date  { white-space: nowrap; font-size: 12px; color: #777; }
+.pb-col-actions { white-space: nowrap; }
+
+.pb-row-inactive td {
+    opacity: 0.55;
+}
+
+/* Schedule badge */
+.pb-crons-table code {
+    font-size: 12px;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    padding: 2px 6px;
+    border-radius: 3px;
+    color: #333;
+}
+
+/* One-shot badge */
+.pb-badge-oneshot {
+    background-color: #e67e22;
+}
+
+/* Action buttons spacing */
+.pb-col-actions .btn + .btn {
+    margin-left: 3px;
+}
+
+/* Log table */
+.pb-logs-table {
+    font-size: 12px;
+}
+.pb-log-error td {
+    background-color: #fff5f5 !important;
+}
+.pb-log-response {
+    display: block;
+    max-width: 320px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* Delete modal */
+.pb-modal-danger {
+    background: #c0392b;
+    border-radius: 3px 3px 0 0;
+}
+.pb-modal-danger .modal-title,
+.pb-modal-danger .close {
+    color: #fff;
+    opacity: 1;
+}
+.pb-delete-desc {
+    font-weight: bold;
+    color: #555;
+    word-break: break-word;
+}
+
+/* Cron URL input */
+#pb-cron-url {
+    font-family: monospace;
+    font-size: 12px;
+    background: #f9f9f9;
+}
+
+/* Add new task button in panel heading */
+.panel-heading .panel-heading-action .btn {
+    white-space: nowrap;
+}
+
+/* Tabs */
+#pb-main-tabs {
+    margin-bottom: -1px;
+}
+#pb-main-tabs > li > a {
+    border-radius: 3px 3px 0 0;
+}
+.pb-tab-panel {
+    border-top-left-radius: 0;
+    margin-bottom: 10px;
+}
+
+/* Log tab header actions */
+.pb-log-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.pb-log-actions select {
+    display: inline-block;
+    width: auto;
+    min-width: 180px;
+    height: 30px;
+}
+
+/* Per-page select */
+.pb-per-page-select {
+    display: inline-block;
+    width: auto;
+    min-width: 60px;
+}
+
+/* Log footer: info + pagination */
+.pb-log-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    background: #fafafa;
+    border-top: 1px solid #eee;
+    font-size: 12px;
+}
+.pb-log-footer .pagination {
+    margin: 0;
+    font-size: 12px;
+}
+
+/* Purge URL bar */
+.pb-purge-url-bar {
+    background: #fafafa;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 6px;
+}
+#pb-purge-url {
+    font-family: monospace;
+    font-size: 11px;
+    background: #f9f9f9;
+}
+
+/* Footer */
+.pb-footer-panel {
+    border-top: 2px solid #e8e8e8;
+    margin-top: 10px;
+}
+.pb-footer-panel .panel-body {
+    padding: 8px;
+}
